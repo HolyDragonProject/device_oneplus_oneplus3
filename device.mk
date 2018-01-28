@@ -25,6 +25,11 @@ $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-2048-hwui-memory.mk)
 
+LOCAL_KERNEL := $(LOCAL_PATH)/kernel/Image.gz-dtb
+
+PRODUCT_COPY_FILES := \
+    $(LOCAL_KERNEL):kernel
+
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
