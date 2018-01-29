@@ -127,5 +127,5 @@ on charger
     start dashd
 
 on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "cfq"
+    setprop sys.io.scheduler "maple"
     start perfd
