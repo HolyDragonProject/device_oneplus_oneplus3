@@ -46,6 +46,9 @@ TARGET_2ND_CPU_VARIANT := kryo
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
 
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
+
 ENABLE_CPUSETS := true
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.selinux=permissive user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.bootdevice=624000.ufshc
