@@ -133,3 +133,87 @@ on charger
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler "maple"
     start perfd
+
+#################################################################
+# Balance (default profile)
+on property:persist.spectrum.profile=0
+
+#set scheduler
+write /sys/block/sda/queue/scheduler "maple"
+
+# Configure governor settings for little cluster
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+
+# Configure governor settings for big cluster
+write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
+
+# Input boost configuration
+write /sys/module/cpu_boost/parameters/input_boost_freq 0:1036800
+write /sys/module/cpu_boost/parameters/input_boost_ms 20
+write /sys/module/msm_performance/parameters/touchboost 1
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq 133000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq 624000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/governor msm-adreno-tz
+
+#################################################################
+# Performance
+on property:persist.spectrum.profile=1
+
+#set scheduler
+write /sys/block/sda/queue/scheduler "deadline"
+
+# Configure governor settings for little cluster
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "nightmare"
+
+# Configure governor settings for big cluster
+write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "nightmare"
+
+# Input boost configuration
+write /sys/module/cpu_boost/parameters/input_boost_freq 0:1286400 2:1324800
+write /sys/module/cpu_boost/parameters/input_boost_ms 400
+write /sys/module/msm_performance/parameters/touchboost 1
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq 214000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/max_freq 624000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/governor msm-adreno-tz
+
+#################################################################
+# Battery
+on property:persist.spectrum.profile=2
+
+#set scheduler
+write /sys/block/sda/queue/scheduler "bfq"
+
+# Configure governor settings for little cluster
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "darkness"
+
+# Configure governor settings for big cluster
+write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "darkness"
+
+# Input boost configuration
+write /sys/module/cpu_boost/parameters/input_boost_freq 0:652800
+write /sys/module/cpu_boost/parameters/input_boost_ms 0
+write /sys/module/msm_performance/parameters/touchboost 0
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq 133000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/max_freq 401000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/governor powersave
+
+#################################################################
+# Gaming
+on property:persist.spectrum.profile=3
+
+#set scheduler
+write /sys/block/sda/queue/scheduler "fiops"
+
+# Configure governor settings for little cluster
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "performance"
+
+# Configure governor settings for big cluster
+write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "performance"
+
+# Input boost configuration
+write /sys/module/cpu_boost/parameters/input_boost_freq 0:1286400  2:1324800
+write /sys/module/cpu_boost/parameters/input_boost_ms 600
+write /sys/module/msm_performance/parameters/touchboost 1
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq 214000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/min_freq 624000000
+write /sys/class/devfreq/b00000.qcom,kgsl-3d0/governor performance

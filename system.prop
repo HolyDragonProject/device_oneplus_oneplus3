@@ -146,3 +146,8 @@ persist.camera.gyro.disable=0
 
 # touch optimize
 persist.vendor.qti.inputopts.enable=true
+
+# Spectrum
+spectrum.support=1
+persist.spectrum.kernel=HolyDragon
+persist.spectrum.profile=0
