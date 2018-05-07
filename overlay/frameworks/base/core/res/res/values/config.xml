@@ -31,6 +31,9 @@
     <!-- Does device supports fast charging ? -->
     <bool name="config_FastChargingLedSupported">true</bool>
 
+    <!-- Whether device has dash charging support -->
+    <bool name="config_hasDashCharger">true</bool>
+
     <integer name="config_defaultNotificationLedOn">1000</integer>
     <integer name="config_defaultNotificationLedOff">1000</integer>
 
