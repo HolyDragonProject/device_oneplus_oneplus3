@@ -126,6 +126,12 @@ PRODUCT_PACKAGES += \
     tinymix
 
 PRODUCT_PACKAGES += \
+    libcxcore \
+    libcv \
+    libcvaux \
+    libcvhighgui \
+    libcvml \
+    libopencv \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing
