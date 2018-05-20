@@ -151,3 +151,6 @@ persist.vendor.qti.inputopts.enable=true
 spectrum.support=1
 persist.spectrum.kernel=HolyDragon
 persist.spectrum.profile=0
+
+# AoD
+persist.debug.force_burn_in=true
