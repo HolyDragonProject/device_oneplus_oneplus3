@@ -1,3 +1,11 @@
+on early-init	
+    # Tweak IO performance during boot up
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/read_ahead_kb 2048
+on early-fs
+    start setup-decrypt
 on boot
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
@@ -53,7 +61,7 @@ on enable-low-power
 
     # Input boost configuration
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 2:1324800"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/module/cpu_boost/parameters/input_boost_ms 20
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
