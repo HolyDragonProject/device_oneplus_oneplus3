@@ -79,6 +79,9 @@ TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+
+# exFAT drivers included in the kernel
+TW_NO_EXFAT_FUSE := true
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_CRYPTO := true
 TW_DEFAULT_BRIGHTNESS := 80
