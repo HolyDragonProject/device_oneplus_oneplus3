@@ -545,6 +545,8 @@ on post-fs-data
     chmod 0660 /dev/dash
     restorecon  /dev/dash
 
+    setprop persist.camera.HAL3.enabled 1
+
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
